@@ -1,0 +1,28 @@
+<header>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container fluid">
+            <a class="navbar-brand" {%if page.url=="/"%}href="#" {%endif%} href="/">
+                <img src="/assets/images/logo.svg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                Antonio.dev
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+
+                    {% for item in site.data.navigation %}
+                    <li class="nav-item">
+                        <a class="nav-link" {%if page.url==item.link%}href="#" {%endif%} href="{{ item.link }}">
+                            {{ item.name }}
+                        </a>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </div>    
+        </div>
+    </nav>
+</header>
