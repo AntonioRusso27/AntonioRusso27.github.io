@@ -3,4 +3,10 @@ layout: default
 title:  Antonio.dev
 ---
 <h1>Antonio </h1>
-<p class="fs-5 fw-light ms-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda excepturi exercitationem nihil, repellendus ad tenetur tempore quae, ipsum officia aliquid architecto neque praesentium sed aut, ipsa adipisci. Nobis, impedit esse?</p>
+<ul>
+    {% for post in site.posts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
