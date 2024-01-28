@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","sourcesContent":[],"file":"styles.css"}
+{"version":3,"sourceRoot":"","sources":["../../_sass/main.scss"],"names":[],"mappings":"AAAA;EACI;EACA;EACA;EACA;;;AAGJ;EACI","sourcesContent":["#flex-wrapper {\r\n    display: flex;\r\n    min-height: 100vh;\r\n    flex-direction: column;\r\n    justify-content: flex-start;\r\n}\r\n\r\n#footer {\r\n    margin-top: auto;\r\n}"],"file":"styles.css"}
