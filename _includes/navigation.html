@@ -1,8 +1,8 @@
 <header>
     <nav class="navbar bg-body-tertiary">
         <div class="container fluid">
-            <a class="navbar-brand" {%if page.url=="/"%}href="#" {%endif%} href="/">
-                <img src="/assets/images/logo.svg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            <a class="navbar-brand fs-3" {%if page.url=="/"%}href="#" {%endif%} href="/">
+                <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
                 Antonio.dev
             </a>
 
@@ -15,7 +15,7 @@
 
                     {% for item in site.data.navigation %}
                     <li class="nav-item">
-                        <a class="nav-link" {%if page.url==item.link%}href="#" {%endif%} href="{{ item.link }}">
+                        <a class="nav-link fs-5" {%if page.url==item.link%}href="#" {%endif%} href="{{ item.link }}">
                             {{ item.name }}
                         </a>
                     </li>
