@@ -2,9 +2,9 @@
 layout: default
 title:  Antonio.dev
 ---
-<h1>Posts </h1>
+<h1>Latest posts</h1>
 <ul class="list-group">
-    {% for post in site.posts limit:3%}
+    {% for post in site.posts limit:3 %}
       <li class="list-group-item  my-2">
         <span class="fs-5"><a class="link-primary fs-3" href="{{post.url}}">{{ post.title }}</a>&nbsp;-&nbsp;{{post.date | date_to_string}}&nbsp;&nbsp;</span>
         <small class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">{{post.categories | array_to_sentence_string: " "}}</small>
