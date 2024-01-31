@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-md fixed-top bg-body-tertiary">
         <div class="container fluid">
             <a class="navbar-brand fs-3" {%if page.url=="/"%}href="#" {%endif%} href="/">
-                <img src="/assets/images/logo.svg" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+                <img src="/assets/images/favicon.svg" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
                 Antonio.dev
             </a>
 
@@ -21,11 +21,11 @@
                     </li>
                     {% endfor %}
 
-                    <li class="nav-item">
+                    <li class="nav-item me-2">
                         <div class="vr d-none d-lg-flex h-100 mx-lg-2"></div>
-                    </li>          
+                    </li>
                     
-                    <li class="nav-item dropdown ms-2 mt-1">
+                    <li class="nav-item dropdown mt-1">
                         <button type="button" class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown">Theme</button>
                         <ul class="dropdown-menu">
                             <li><button class="dropdown-item" onclick="setThemeLight(this)" onmouseover="dropdownColorBg(this)" onmouseleave="dropdownColorBgReset(this)">Light</button></li>
