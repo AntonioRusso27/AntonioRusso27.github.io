@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   let storedTheme = getStoredTheme();
   setThemeAttribute(storedTheme);
-  switchTheme()
 });
 
 function getStoredTheme() {
