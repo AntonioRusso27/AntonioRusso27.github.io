@@ -1,16 +1,29 @@
-:root{
-    --onyx: #393d3fff;
-    --cambridge-blue: #94a89aff;
-    --dark-orange-web: #f58f29ff;
+:root {
+  --onyx: #393d3fff;
+  --cambridge-blue: #94a89aff;
+  --dark-orange-web: #f58f29ff;
 }
 
 #flex-wrapper {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    justify-content: flex-start;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 #footer {
-    margin-top: auto;
+  margin-top: auto;
+}
+
+#switch:hover {
+  color: var(--dark-orange-web) !important;
+}
+
+#sun, #moon {
+  transition: all .20s ease-in-out;
+}
+
+#sun:active, #moon:active {
+  transform: rotate( 90deg ) scale( 0 );
+  opacity: 0;
 }
