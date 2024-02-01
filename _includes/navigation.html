@@ -1,40 +1,45 @@
 <header>
-    <nav class="navbar navbar-expand-md fixed-top bg-body-tertiary">
-        <div class="container fluid">
-            <a class="navbar-brand fs-3" {%if page.url=="/"%}href="#" {%endif%} href="/">
-                <img src="/assets/images/aicon.svg" alt="Logo" width="40" height="40" class="d-inline-block align-text-center">
-                Antonio.dev
+  <nav class="navbar navbar-expand-md fixed-top bg-body-tertiary">
+    <div class="container fluid">
+      <a class="navbar-brand fs-3" {%if page.url=="/" %}href="#" {%endif%} href="/">
+        <img src="/assets/images/aicon.svg" alt="Logo" width="40" height="40"
+          class="d-inline-block align-text-center" />
+        <span>Antonio.dev</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+          {% for item in site.data.navigation %}
+          <li class="nav-item">
+            <a class="nav-link fs-5" {%if page.url==item.link%}href="#" {%endif%} href="{{ item.link }}">
+              {{ item.name }}
             </a>
+          </li>
+          {% endfor %}
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+          <li class="nav-item me-2">
+            <div class="vr d-none d-lg-flex h-100 mx-lg-2"></div>
+          </li>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+          <li class="nav-item dropdown mt-1">
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false"
+              data-bs-toggle="dropdown">Theme</button>
+            <ul class="dropdown-menu">
+              <li><button class="dropdown-item" onclick="setThemeLight(this)" onmouseover="dropdownColorBg(this)"
+                  onmouseleave="dropdownColorBgReset(this)">Light</button></li>
+              <li><button class="dropdown-item" onclick="setThemeDark(this)" onmouseover="dropdownColorBg(this)"
+                  onmouseleave="dropdownColorBgReset(this)">Dark</button></li>
+            </ul>
+          </li>
 
-                    {% for item in site.data.navigation %}
-                    <li class="nav-item">
-                        <a class="nav-link fs-5" {%if page.url==item.link%}href="#" {%endif%} href="{{ item.link }}">
-                            {{ item.name }}
-                        </a>
-                    </li>
-                    {% endfor %}
-
-                    <li class="nav-item me-2">
-                        <div class="vr d-none d-lg-flex h-100 mx-lg-2"></div>
-                    </li>
-                    
-                    <li class="nav-item dropdown mt-1">
-                        <button type="button" class="btn btn-outline-secondary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown">Theme</button>
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" onclick="setThemeLight(this)" onmouseover="dropdownColorBg(this)" onmouseleave="dropdownColorBgReset(this)">Light</button></li>
-                            <li><button class="dropdown-item" onclick="setThemeDark(this)" onmouseover="dropdownColorBg(this)" onmouseleave="dropdownColorBgReset(this)">Dark</button></li>
-                        </ul>  
-                    </li>
-
-                </ul>
-            </div>    
-        </div>
-    </nav>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>

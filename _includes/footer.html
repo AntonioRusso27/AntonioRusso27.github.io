@@ -1,20 +1,16 @@
 <footer class="footer mt-5">
-    <div class="bg-body-tertiary text-center">
-        <div class="container pt-2">
-            <p class="text-secondary">under construction :)</p>
-            <section class="mb-2">
-                {% for item in site.data.footer %}
-                <a
-                    data-mdb-ripple-init
-                    class="btn text-white btn-floating m-1"
-                    href="{{ item.link }}"
-                    target="_blank"
-                    role="button">
-                    <img src="/assets/images/{{ item.name }}.svg" width="25" height="25">
-                </a>
-                {% endfor %}
-            </section>
-            <p class="text-secondary pb-3">Antonio Russo - 2024</p>
-        </div>
+  <div class="bg-body-tertiary text-center">
+    <div class="container pt-2">
+      <p class="text-secondary">under construction :)</p>
+      <section class="mb-2">
+        {% for item in site.data.footer %}
+        <a data-mdb-ripple-init class="btn text-white btn-floating m-1" href="{{ item.link }}" target="_blank"
+          role="button">
+          <img src="/assets/images/{{ item.name }}.svg" width="25" height="25" />
+        </a>
+        {% endfor %}
+      </section>
+      <p class="text-secondary pb-3">Antonio Russo - 2024</p>
     </div>
+  </div>
 </footer>
