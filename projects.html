@@ -4,11 +4,14 @@ title: Projects
 ---
 
 <h1>Projects</h1>
-<ol class="list-group">
+<p class="lead">A list of my latest projects:</p>
+<ul class="list-group">
+  {% assign filtered_posts = site.posts | where: 'categories', 'projects' %}
+  {% for post in filtered_posts %}
   <li class="list-group-item my-2">
-    <a class="link-primary fs-3">Project #1</a>
-    <div>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit...</p>
-    </div>
+    <span class="fs-5"><a class="link-primary fs-3" href="{{post.url}}">{{ post.title }}</a>&nbsp;-&nbsp;{{post.date |
+      date_to_string}}</span>
+    <span>{{post.excerpt}}</span>
   </li>
-</ol>
+  {% endfor %}
+</ul>
