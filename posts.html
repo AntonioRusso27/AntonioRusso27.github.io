@@ -1,0 +1,43 @@
+---
+layout: default
+title: Posts
+---
+
+<h2>Latest Post</h2>
+<div class="container mt-3">
+  <ul class="list-group list-group-flush mt-3">    
+    {% assign post = site.posts[0] %}
+    <li class="list-group-item">
+      <span class="fs-5">
+        <a class="link-primary fs-3" href="{{post.url}}">{{ post.title }}</a>&nbsp;-&nbsp;{{post.date | date_to_string}}&nbsp;&nbsp;
+      </span>
+
+      {% for category in post.categories %}
+      <small
+        class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">
+        {{ category }}
+      </small>
+      {% endfor %}
+      
+      <span>{{post.excerpt}}</span>
+    </li>
+  </ul>
+</div>
+
+<hr class="my-3">
+<h2>Posts</h2>
+
+{% for category in site.categories %}
+<div class="container my-3">
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-light fs-5">{{ category[0] | capitalize }}</li>
+    {% for post in category[1] %}
+    <li class="list-group-item">
+      <span class="fs-5"><a class="link-primary fs-3" href="{{post.url}}">{{ post.title }}</a>&nbsp;-&nbsp;{{post.date |
+        date_to_string}}</span>
+        <span>{{post.excerpt}}</span>
+      </li>
+      {% endfor %}
+    </ul>
+</div>
+{% endfor %}

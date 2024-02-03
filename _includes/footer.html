@@ -1,16 +1,16 @@
-<footer class="footer">
+<footer class="footer pt-4">
   <div class="bg-body-tertiary text-center">
-    <div class="container pt-2">
+    <div class="container">
       <section>
         {% for item in site.data.footer %}
         <a class="btn mb-1 px-3" href="{{ item.link }}" target="_blank" role="button">
-          <svg width="25" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <svg width="25" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path {{ item.path }} />
           </svg>
         </a>
         {% endfor %}
       </section>
-      <p class="text-secondary pb-2">Antonio Russo - 2024</p>
+      <p class="text-secondary pb-2 lead fs-5">Antonio Russo - 2024</p>
     </div>
   </div>
 </footer>
