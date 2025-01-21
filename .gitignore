@@ -1,7 +1,8 @@
 todo.md
 post_blank.html
 Gemfile.lock
-_drafts
+_drafts/
+_site/
 
 .jekyll-cache/
 .sass-cache/
