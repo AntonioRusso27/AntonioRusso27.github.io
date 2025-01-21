@@ -220,14 +220,19 @@ excerpt_separator: <!--more-->
   <hr />
   <div class="pt-3">
     <h3>Exploratory Data Analysis</h3>
+    <p>
+      This section shows some of the plots produced to <em>explore, understand and extract</em> <strong>visual insights</strong> from the provided data. All the plots can be visualized in the hosted <a href="https://insect-weather-analysis-isbi2024-25.streamlit.app/">dashboard</a>.
+    </p>
     
+  <!-- Commented to reduce page loading times
     <h4 class="pt-2">Interactive Data Visualization</h4>
     <p>
       This graph shows the merged data we are working with, the catches and weather trends divided by area of interest:
       {% include merge.html %}
     </p>
+  -->
 
-    <h4 class="pt-4">Investigating variables</h4>
+    <h4 class="pt-2">Investigating variables</h4>
     <p>
       This graph confronts the weather data and its distribution:
       {% include weather_distr.html %}
@@ -252,10 +257,12 @@ excerpt_separator: <!--more-->
       These intervals may represent the insects' preferred weather conditions.
     </p>
 
+  <!-- Commented to reduce page loading times
     <h4 class="pt-4">Visual-quantitative analysis</h4>
     <p>
       {% include violin_corr.html %}
     </p>
+  -->
   </div>
 
   <hr />
