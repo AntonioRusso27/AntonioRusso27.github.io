@@ -4,7 +4,7 @@
       <a class="navbar-brand fs-3" {%if page.url=="/" %}href="#" {%endif%} href="/">
         <img src="/assets/images/aicon.svg" alt="Logo" width="40" height="40"
           class="d-inline-block align-text-center mb-1" />
-        <span>Antonio.dev</span>
+        <span>Antonio</span>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -17,7 +17,7 @@
 
           {% for item in site.data.navigation %}
           <li class="nav-item">
-            <a class="nav-link fs-5" {%if page.url==item.link%}href="#" {%endif%} href="{{ item.link }}">
+            <a class="nav-link fs-5" {% if page.title==item.name %} href="#" {% endif %} href="{{ item.link }}">
               {{ item.name }}
             </a>
           </li>

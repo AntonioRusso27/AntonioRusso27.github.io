@@ -1,2 +1,11 @@
 todo.md
+post_blank.html
+Gemfile.lock
 _drafts
+
+.jekyll-cache/
+.sass-cache/
+.jekyll-metadata
+
+.bundle/
+vendor/

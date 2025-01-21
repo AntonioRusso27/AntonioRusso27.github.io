@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Antonio.dev
+title: Antonio
 ---
 
 <h1>Latest posts</h1>
@@ -9,15 +9,15 @@ title: Antonio.dev
     {% for post in site.posts limit:3 %}
     <li class="list-group-item">
       <span class="fs-5"><a class="link-primary fs-3" href="{{post.url}}">{{ post.title }}</a>&nbsp;-&nbsp;{{post.date |
-        date_to_string}}&nbsp;&nbsp;</span>
+        date_to_string}}</span>
         
-        {% for category in post.categories %}
-        <small
-        class="d-inline-flex mb-3 px-2 py-1 fw-semibold text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-2">
+      {% for category in post.categories %}
+      <small class="mx-2 px-2 py-1 fw-semibold text-warning-emphasis bg-orange-subtle border border-orange-subtle rounded-2">
         {{ category }}
       </small>
       {% endfor %}
-      <span>{{post.excerpt}}</span>
+      
+      <div class="mx-3 mt-3">{{post.excerpt}}</div>
     </li>
     {% endfor %}
   </ul>

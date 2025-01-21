@@ -1,0 +1,329 @@
+---
+layout: default
+author: Antonio
+title: "Short Time Series Analysis"
+excerpt_separator: <!--more-->
+---
+
+<p>
+  <em><strong>Preprocessing</strong>, <strong>EDA</strong> and <strong>Forecast</strong> of a Short Time Series&nbsp;&nbsp;</em>
+  <img alt="Static Badge" src="https://img.shields.io/badge/pandas-f58f29">
+  <img alt="Static Badge" src="https://img.shields.io/badge/sklearn-gray">
+  <img alt="Static Badge" src="https://img.shields.io/badge/pmdarima-f58f29">
+  <img alt="Static Badge" src="https://img.shields.io/badge/keras-gray">
+  <img alt="Static Badge" src="https://img.shields.io/badge/streamlit-f58f29">
+  <img alt="Static Badge" src="https://img.shields.io/badge/plotly-gray">
+</p>
+<!--more-->
+
+<div class="clearfix">
+  <!-- img class="img-fluid col-md-4 float-md-end mb-3 ms-md-3" src=""/-->
+  <h1>Short Time Series Analysis</h1>
+  <h2>Trapped insects forecast based on meteorological data</a></h2>
+
+  <p>This was a group project (w/ <a class="link-primary" href="https://github.com/leomarra01" target="_blank">Leonardo Maria Marra</a>) part of the <em>Information Systems and Business Intelligence</em> exam taken at the University of Naples Federico II</p>
+
+  <div class="pt-2">
+    <h3>Objective</h3>
+    <p>
+      We are in the case where we want to predict the number of insects caught, or their occurrence using meteorological data together with the occurrence of the same in previous time intervals.
+    </p>
+  </div>
+
+  <hr />
+  <div class="pt-2">
+    <h3>Data loading</h3>
+    <p>
+      The <a class="link-primary" href="https://github.com/AntonioRusso27/InsectTrapAnalysis_Dashboard_UNINA_ISBI_2024-25/tree/main/data">data</a> are time series pertaining to insect catches in specific areas of the territory and the related meteorological data.
+      The data was provided in <code>.xlsx</code> format and, after being appropriately <em>transformed*</em> is uploaded in <code>.csv</code> format
+    </p>
+    <p><em>* The transformation is explored in the Preprocessing section.</em></p>
+  </div>
+
+  <hr />
+  <div class="pt-2">
+    <h3>Preprocessing</h3>
+    <p>At this stage the data is properly prepared for the next steps.</p>
+
+    <p>The data was initially split into different files. One containing the <b>meteorological info</b> and another regarding the <b>catches data</b>, for each one of the 5 areas.</p>
+
+    <h4>Catches Data</h4>
+    <table class="table table-sm table-striped table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">DateTime</th>
+          <th scope="col">Total captured</th>
+          <th scope="col">New captures</th>
+          <th scope="col">Reviewed</th>
+          <th scope="col">Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="col">17.07.2024</th>
+          <td>1</td>
+          <td>1</td>
+          <td>Yes</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <th scope="col">18.07.2024</th>
+          <td>1</td>
+          <td>1</td>
+          <td>Yes</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <th scope="col">19.07.2024</th>
+          <td>1</td>
+          <td>0</td>
+          <td>Yes</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <th scope="col">20.07.2024</th>
+          <td>1</td>
+          <td>0</td>
+          <td>Yes</td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <th scope="col">20.07.2024</th>
+          <td>/</td>
+          <td>/</td>
+          <td>Yes</td>
+          <td>Cleaning</td>
+        </tr>
+        <tr>
+          <th scope="col">...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Meteorological Data</h4>
+    <table class="table table-sm table-striped table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">DateTime</th>
+          <th scope="col">Temperature</th>
+          <th scope="col">Umidity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="col">17.07.2024 00:00:00</th>
+          <td>20,98</td>
+          <td>73,22</td>
+        </tr>
+        <tr>
+          <th scope="col">17.07.2024 01:00:00</th>
+          <td>23,74</td>
+          <td>59,92</td>
+        </tr>
+        <tr>
+          <th scope="col">17.07.2024 02:00:00</th>
+          <td>21,48</td>
+          <td>66,22</td>
+        </tr>
+        <tr>
+          <th scope="col">17.07.2024 03:00:00</th>
+          <td>19,62</td>
+          <td>72,62</td>
+        </tr>
+        <tr>
+          <th scope="col">17.07.2024 04:00:00</th>
+          <td>18,26</td>
+          <td>77,29</td>
+        </tr>
+        <tr>
+          <th scope="col">...</th>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><em>It's important to notice the difference in sampling rate between the datasets.</em></p>
+
+    <p>The <strong>transformation</strong> mentioned above consists of:</p>
+
+    <ul class="list">
+      <li class="list-item">Removal of irrelevant columns and/or records concerning insect capture (Cleaning, Reviewed);</li>
+      <li class="list-item">Exclusion of redundant columns concerning weather information;</li>
+      <li class="list-item">Calculation of daily weather data and association with catch data.</li>
+    </ul>
+
+    <p>This results in datasets having the following structure:</p>
+
+    <table class="table table-sm table-striped table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">DateTime</th>
+          <th scope="col">Total captured</th>
+          <th scope="col">New captures</th>
+          <th scope="col">Temperature</th>
+          <th scope="col">Umidity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>2024-08-17</th>
+          <td>0</td>
+          <td>0</td>
+          <td>28.244167</td>
+          <td>61.428750</td>
+        </tr>
+        <tr>
+          <th>2024-08-18</th>
+          <td>0</td>
+          <td>0</td>
+          <td>26.890000</td>
+          <td>64.881250</td>
+        </tr>
+        <tr>
+          <th>2024-08-19</th>
+          <td>0</td>
+          <td>0</td>
+          <td>25.890417</td>
+          <td>64.844167</td>
+        </tr>
+        <tr>
+          <th>2024-08-20</th>
+          <td>1</td>
+          <td>1</td>
+          <td>21.650417</td>
+          <td>83.205417</td>
+        </tr>
+        <tr>
+          <th>2024-08-21</th>
+          <td>1</td>
+          <td>0</td>
+          <td>23.003750</td>
+          <td>87.472083</td>
+        </tr>
+        <tr>
+          <th scope="col">...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <hr />
+  <div class="pt-3">
+    <h3>Exploratory Data Analysis</h3>
+    
+    <h4 class="pt-2">Interactive Data Visualization</h4>
+    <p>
+      This graph shows the merged data we are working with, the catches and weather trends divided by area of interest:
+      {% include merge.html %}
+    </p>
+
+    <h4 class="pt-4">Investigating variables</h4>
+    <p>
+      This graph confronts the weather data and its distribution:
+      {% include weather_distr.html %}
+    </p>
+    <p>
+      The two main areas, even though they may not be physically close, seems to be <strong>meteorologically similar</strong>.
+    </p>
+
+    <h4 class="pt-4">Exploring variables relationship</h4>
+    <p>
+      This graph shows the relationship between <em>Temperature, Humidity</em> and the number of <em>Catches</em>:
+      {% include weather_catches.html %}
+    </p>
+    <p>
+      It seems like the majority of <em>Catches</em> happen in a certain interval:
+      <ul class="list-group ml-4">
+        <li class="list-group-item">25°C < Temperature < 29°C</li>
+        <li class="list-group-item">50% < Humidity < 73%</li>
+      </ul>
+    </p>
+    <p>
+      These intervals may represent the insects' preferred weather conditions.
+    </p>
+
+    <h4 class="pt-4">Visual-quantitative analysis</h4>
+    <p>
+      {% include violin_corr.html %}
+    </p>
+  </div>
+
+  <hr />
+  <div class="pt-2">
+    <h3>Results</h3>
+    <p> Multiple models were trained with this data, in the hosted <a href="https://insect-weather-analysis-isbi2024-25.streamlit.app/">dashboard</a> there are plots of each model's forecast for each one of the time series.
+    </p>
+    <p>The following table sums up the results in terms of the evaluation metric used (<a class="link-primary" href="https://en.wikipedia.org/wiki/Root_mean_square_deviation" target="_blank">RMSE</a>):</p>
+    
+    <table class="table table-sm table-striped table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Model</th>
+          <th scope="col">Cicalino 1</th>
+          <th scope="col">Cicalino 2</th>
+          <th scope="col">Cicalino Merged</th>
+          <th scope="col">Imola 1</th>
+          <th scope="col">Imola 2</th>
+          <th scope="col">Imola 3</th>
+          <th scope="col">Imola Merged</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Decision Tree</th>
+          <td>0.77</td>
+          <td>0.33</td>
+          <td>0.89</td>
+          <td>2.05</td>
+          <td>0.63</td>
+          <td>1.00</td>
+          <td>2.57</td>
+        </tr>
+        <tr>
+          <th>ARIMAX</th>
+          <td>0.00</td>
+          <td>0.33</td>
+          <td>0.32</td>
+          <td>2.05</td>
+          <td>0.00</td>
+          <td>1.00</td>
+          <td>2.76</td>
+        </tr>
+        <tr>
+          <th>LSTM</th>
+          <td>0.00</td>
+          <td>0.33</td>
+          <td>0.32</td>
+          <td>2.05</td>
+          <td>0.00</td>
+          <td>0.00</td>
+          <td>2.76</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr />
+<h3>Links</h3>
+<ul class="list-group">
+  <li class="list-group-item">
+    <a class="link-primary" href="https://colab.research.google.com/drive/1YV1cjC6X9wumXmL7-I4mRKNLC0gMk6oD?usp=sharing" target="_blank">Google Colab notebook</a> - Italian
+  </li>
+  <li class="list-group-item">
+    <a class="link-primary" href="https://insect-weather-analysis-isbi2024-25.streamlit.app/" target="_blank">Streamlit dashboard</a>  - Hosted on Streamlit Community Cloud
+  </li>
+  <li class="list-group-item">
+    <a class="link-primary" href="https://github.com/AntonioRusso27/InsectTrapAnalysis_Dashboard_UNINA_ISBI_2024-25" target="_blank">Github repository</a>  - Streamlit dashboard 
+  </li>
+</ul>

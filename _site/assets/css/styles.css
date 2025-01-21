@@ -16,17 +16,12 @@
   margin-top: auto;
 }
 
-#switch:hover {
-  color: var(--dark-orange-web) !important;
-}
-
 #sun, #moon {
   transition: all 0.2s ease-in-out;
 }
 
-#sun:active, #moon:active {
-  transform: rotate(90deg) scale(0);
-  opacity: 0;
+#sun:hover, #moon:hover {
+  transform: scale(125%);
 }
 
 /*# sourceMappingURL=styles.css.map */
