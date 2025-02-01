@@ -1,7 +1,7 @@
 ---
 layout: default
 author: Antonio
-title: "Short Time Series Analysis"
+title: "Short Time Series Analysis - Antonio"
 excerpt_separator: <!--more-->
 ---
 
@@ -16,14 +16,14 @@ excerpt_separator: <!--more-->
 </p>
 <!--more-->
 
-<div class="clearfix">
+<div class="cleafix">
   <!-- img class="img-fluid col-md-4 float-md-end mb-3 ms-md-3" src=""/-->
   <h1>Short Time Series Analysis</h1>
   <h2>Trapped insects forecast based on meteorological data</a></h2>
 
   <p>This was a group project (w/ <a class="link-primary" href="https://github.com/leomarra01" target="_blank">Leonardo Maria Marra</a>) part of the <em>Information Systems and Business Intelligence</em> exam taken at the University of Naples Federico II</p>
 
-  <div class="pt-2">
+  <div class="container pt-2">
     <h3>Objective</h3>
     <p>
       We are in the case where we want to predict the number of insects caught, or their occurrence using meteorological data together with the occurrence of the same in previous time intervals.
@@ -31,7 +31,7 @@ excerpt_separator: <!--more-->
   </div>
 
   <hr />
-  <div class="pt-2">
+  <div class="container pt-2">
     <h3>Data loading</h3>
     <p>
       The <a class="link-primary" href="https://github.com/AntonioRusso27/InsectTrapAnalysis_Dashboard_UNINA_ISBI_2024-25/tree/main/data">data</a> are time series pertaining to insect catches in specific areas of the territory and the related meteorological data.
@@ -41,7 +41,7 @@ excerpt_separator: <!--more-->
   </div>
 
   <hr />
-  <div class="pt-2">
+  <div class="container pt-2">
     <h3>Preprocessing</h3>
     <p>At this stage the data is properly prepared for the next steps.</p>
 
@@ -218,29 +218,32 @@ excerpt_separator: <!--more-->
   </div>
 
   <hr />
-  <div class="pt-3">
+  <div class="container pt-3">
     <h3>Exploratory Data Analysis</h3>
     <p>
-      This section shows some of the plots produced to <em>explore, understand and extract</em> <strong>visual insights</strong> from the provided data. All the plots can be visualized in the hosted <a href="https://insect-weather-analysis-isbi2024-25.streamlit.app/">dashboard</a>.
+      This section shows some of the plots produced to <em>explore, understand and extract</em> <strong>visual insights</strong> from the provided data.
+    </p>
+    <p>
+      Interactive plots can be visualized at the hosted <a href="https://insect-weather-analysis-isbi2024-25.streamlit.app/">dashboard</a>.
     </p>
     
   <!-- Commented to reduce page loading times
     <h4 class="pt-2">Interactive Data Visualization</h4>
     <p>
       This graph shows the merged data we are working with, the catches and weather trends divided by area of interest:
-      {% include merge.html %}
+      {include merge.html}
     </p>
-  -->
-
+    
     <h4 class="pt-2">Investigating variables</h4>
     <p>
       This graph confronts the weather data and its distribution:
-      {% include weather_distr.html %}
+      {include weather_distr.html}
     </p>
     <p>
       The two main areas, even though they may not be physically close, seems to be <strong>meteorologically similar</strong>.
     </p>
-
+    
+    -->
     <h4 class="pt-4">Exploring variables relationship</h4>
     <p>
       This graph shows the relationship between <em>Temperature, Humidity</em> and the number of <em>Catches</em>:
@@ -260,13 +263,13 @@ excerpt_separator: <!--more-->
   <!-- Commented to reduce page loading times
     <h4 class="pt-4">Visual-quantitative analysis</h4>
     <p>
-      {% include violin_corr.html %}
+      {include violin_corr.html}
     </p>
   -->
   </div>
 
   <hr />
-  <div class="pt-2">
+  <div class="container pt-2">
     <h3>Results</h3>
     <p> Multiple models were trained with this data, in the hosted <a href="https://insect-weather-analysis-isbi2024-25.streamlit.app/">dashboard</a> there are plots of each model's forecast for each one of the time series.
     </p>
